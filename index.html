@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <title>【山海と呼吸する】四大多元民族を巡る深層の旅 8日間 | ENVOY TRAVEL 安捷國際旅行社</title>
 
   <!-- Google tag (gtag.js) GA4 追蹤 -->
@@ -12,6 +12,15 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-PPP4CT61HC');
+
+    function trackEvent(action, category, label) {
+      if (typeof gtag === 'function') {
+        gtag('event', action, {
+          'event_category': category,
+          'event_label': label
+        });
+      }
+    }
   </script>
 
   <!-- Google Fonts: Noto Serif JP, Noto Serif TC, Montserrat -->
@@ -57,17 +66,26 @@
       font-family: var(--font-serif-tc);
     }
 
+    /* 手機與 Surface Pro 雙適配容器 */
     .mobile-stage {
       width: 100%;
-      max-width: 480px;
       background-color: var(--c-paper);
       min-height: 100vh;
       position: relative;
-      box-shadow: 0 0 40px rgba(0,0,0,0.4);
-      padding-bottom: 95px;
+      box-shadow: 0 0 40px rgba(0,0,0,0.35);
+      padding-bottom: calc(85px + env(safe-area-inset-bottom, 20px));
       overflow-x: hidden;
     }
 
+    @media (min-width: 768px) {
+      .mobile-stage {
+        max-width: 1040px;
+        margin: 20px auto;
+        border-radius: 16px;
+      }
+    }
+
+    /* 頂部泰雅菱格織紋飾帶 */
     .top-tribal-band {
       width: 100%;
       height: 8px;
@@ -77,17 +95,22 @@
       background-size: 10px 8px;
     }
 
+    /* 頂部導航列 */
     .site-nav {
       position: sticky;
       top: 0;
       z-index: 50;
-      background: rgba(250, 248, 245, 0.95);
-      backdrop-filter: blur(8px);
+      background: rgba(250, 248, 245, 0.96);
+      backdrop-filter: blur(10px);
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 12px 20px;
       border-bottom: 1px solid var(--c-border);
+    }
+
+    @media (min-width: 768px) {
+      .site-nav { padding: 16px 36px; }
     }
 
     .brand-group {
@@ -97,12 +120,12 @@
       text-decoration: none;
     }
 
-    .brand-svg { width: 24px; height: 32px; }
+    .brand-svg { width: 26px; height: 34px; }
     .brand-text-block { display: flex; flex-direction: column; }
 
     .brand-name-en {
       font-family: var(--font-en);
-      font-size: 13px;
+      font-size: 13.5px;
       font-weight: 700;
       letter-spacing: 0.18em;
       color: var(--c-navy);
@@ -110,8 +133,7 @@
     }
 
     .brand-name-sub {
-      font-family: var(--font-en);
-      font-size: 8px;
+      font-size: 8.5px;
       letter-spacing: 0.15em;
       color: var(--c-gold);
       font-weight: 600;
@@ -128,7 +150,7 @@
     .lang-btn {
       border: none;
       background: transparent;
-      padding: 4px 10px;
+      padding: 5px 12px;
       font-size: 11px;
       font-family: var(--font-en);
       font-weight: 600;
@@ -144,28 +166,36 @@
       box-shadow: 0 2px 5px rgba(19, 36, 56, 0.25);
     }
 
-    /* 原民會「部行山海間」橫幅 */
+    /* 原民會主視覺橫幅容器 */
     .cip-banner-box {
       padding: 14px 16px 0;
       background: #EAE5DC;
+      display: flex;
+      justify-content: center;
     }
     .cip-banner-img {
       width: 100%;
+      max-width: 960px;
       height: auto;
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.06);
       display: block;
     }
 
+    /* Hero 區域 */
     .hero-editorial {
-      padding: 20px 20px 20px;
+      padding: 20px 20px 24px;
       text-align: center;
       background: linear-gradient(180deg, #EAE5DC 0%, var(--c-paper) 100%);
     }
 
+    @media (min-width: 768px) {
+      .hero-editorial { padding: 32px 48px 28px; }
+    }
+
     .mag-label {
       font-family: var(--font-en);
-      font-size: 10px;
+      font-size: 10.5px;
       font-weight: 600;
       letter-spacing: 0.22em;
       color: var(--c-gold-dark);
@@ -177,18 +207,26 @@
     }
 
     .hero-lead-title {
-      font-size: 22px;
+      font-size: 21px;
       font-weight: 700;
       color: var(--c-navy);
       margin-bottom: 6px;
       line-height: 1.45;
     }
 
+    @media (min-width: 768px) {
+      .hero-lead-title { font-size: 26px; margin-bottom: 10px; }
+    }
+
     .hero-sub-title {
-      font-size: 13px;
+      font-size: 12px;
       color: var(--c-gold-dark);
       font-weight: 600;
       margin-bottom: 14px;
+    }
+
+    @media (min-width: 768px) {
+      .hero-sub-title { font-size: 14px; margin-bottom: 16px; }
     }
 
     .hero-quote-card {
@@ -201,16 +239,22 @@
       line-height: 1.9;
       color: var(--c-navy);
       box-shadow: 0 2px 8px rgba(0,0,0,0.03);
-      margin: 10px 0;
+      margin: 10px auto;
+      max-width: 860px;
+    }
+
+    @media (min-width: 768px) {
+      .hero-quote-card { font-size: 14.5px; padding: 18px 22px; }
     }
 
     .section-block { padding: 24px 20px; }
+    @media (min-width: 768px) { .section-block { padding: 36px 48px; } }
 
     .sec-header-row {
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
-      margin-bottom: 14px;
+      margin-bottom: 16px;
     }
 
     .sec-chapter {
@@ -231,12 +275,16 @@
       padding-bottom: 6px;
     }
 
+    @media (min-width: 768px) {
+      .sec-title { font-size: 21px; }
+    }
+
     .sec-title::after {
       content: '';
       position: absolute;
       left: 0;
       bottom: 0;
-      width: 32px;
+      width: 36px;
       height: 2px;
       background: var(--c-gold);
     }
@@ -248,12 +296,17 @@
       flex-shrink: 0;
     }
 
+    /* 3大規格亮點列（6〜20人規格對齊） */
     .specs-strip {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 6px;
       margin: 16px 0;
       text-align: center;
+    }
+
+    @media (min-width: 768px) {
+      .specs-strip { gap: 16px; margin: 24px 0; }
     }
 
     .spec-item {
@@ -263,18 +316,46 @@
       padding: 10px 4px;
     }
 
+    @media (min-width: 768px) {
+      .spec-item { padding: 18px 12px; border-radius: 12px; }
+    }
+
     .spec-icon { font-size: 16px; margin-bottom: 2px; }
     .spec-title { font-size: 11px; font-weight: 700; color: var(--c-navy); }
     .spec-sub { font-size: 9px; color: #777; }
 
-    /* 四大亮點卡片 */
+    @media (min-width: 768px) {
+      .spec-icon { font-size: 22px; }
+      .spec-title { font-size: 13.5px; margin-bottom: 4px; }
+      .spec-sub { font-size: 11px; }
+    }
+
+    /* 四大亮點卡片（Surface Pro 自動切換為雙欄並排） */
+    .highlights-container {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    @media (min-width: 768px) {
+      .highlights-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+      }
+    }
+
     .highlight-box {
       background: #FFF;
       border: 1px solid var(--c-border);
       border-radius: 12px;
       padding: 16px;
-      margin-bottom: 14px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+    }
+
+    @media (min-width: 768px) {
+      .highlight-box { padding: 22px; }
     }
 
     .hl-header {
@@ -287,23 +368,26 @@
       font-size: 14px;
     }
 
+    @media (min-width: 768px) { .hl-header { font-size: 15.5px; } }
+
     .hl-desc {
       font-size: 12.5px;
       color: #4A4A4A;
       line-height: 1.85;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
 
     .hl-sublist {
       background: var(--c-paper);
       border-radius: 8px;
-      padding: 10px 12px;
+      padding: 12px 14px;
       font-size: 11.5px;
       color: #555;
-      line-height: 1.75;
+      line-height: 1.8;
     }
 
-    /* 6人包團行動承諾卡 */
+    @media (min-width: 768px) { .hl-sublist { font-size: 12.5px; } }
+
     .charter-card {
       background: #F2EFE9;
       border: 1.5px dashed var(--c-gold);
@@ -316,13 +400,26 @@
     }
     .charter-card strong { color: #A62122; }
 
-    /* FAQ 卡片 */
+    /* FAQ 區域（Surface Pro 自動切換為雙欄） */
+    .faq-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    @media (min-width: 768px) {
+      .faq-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+    }
+
     .faq-item {
       background: #FFF;
       border: 1px solid var(--c-border);
       border-radius: 10px;
-      padding: 14px;
-      margin-bottom: 10px;
+      padding: 14px 16px;
     }
 
     .faq-q {
@@ -335,10 +432,12 @@
       margin-bottom: 6px;
     }
 
-    .faq-q span { color: #A62122; }
+    @media (min-width: 768px) { .faq-q { font-size: 14px; } }
+    .faq-q span { color: var(--c-gold-dark); }
     .faq-a { font-size: 12px; color: #555; line-height: 1.75; }
+    @media (min-width: 768px) { .faq-a { font-size: 12.5px; } }
 
-    /* 官方認證與履約保證統一頁尾 */
+    /* 官方認證統一頁尾 */
     .footer-official-badge {
       padding: 28px 20px 16px;
       background-color: #EDE8DF;
@@ -390,34 +489,52 @@
       letter-spacing: 0.05em;
     }
 
+    /* 底部固定按鈕列：手機防遮擋 ✕ Surface Pro 居中收整 */
     .bottom-bar {
       position: fixed;
       bottom: 0;
       left: 50%;
       transform: translateX(-50%);
       width: 100%;
-      max-width: 480px;
-      background: rgba(255, 255, 255, 0.96);
-      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(12px);
       border-top: 1px solid var(--c-border);
       padding: 10px 16px;
+      padding-bottom: calc(10px + env(safe-area-inset-bottom, 16px));
+      display: flex;
+      justify-content: center;
+      z-index: 100;
+      box-shadow: 0 -4px 16px rgba(0,0,0,0.08);
+    }
+
+    .bottom-bar-inner {
+      width: 100%;
+      max-width: 480px;
       display: flex;
       gap: 10px;
-      z-index: 100;
-      box-shadow: 0 -4px 15px rgba(0,0,0,0.06);
+    }
+
+    @media (min-width: 768px) {
+      .bottom-bar {
+        max-width: 540px;
+        border-radius: 14px 14px 0 0;
+        border-left: 1px solid var(--c-border);
+        border-right: 1px solid var(--c-border);
+      }
     }
 
     .bar-btn {
       flex: 1;
-      height: 44px;
-      border-radius: 6px;
+      height: 46px;
+      border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
       text-decoration: none;
-      font-size: 12px;
+      font-size: 13.5px;
       font-weight: 700;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.03em;
+      white-space: nowrap; /* 絕對不折行 */
     }
 
     .btn-mail { background: var(--c-navy); color: #FFF; }
@@ -428,6 +545,7 @@
 
   <div class="mobile-stage">
 
+    <!-- 頂部全站統一飾帶 -->
     <div class="top-tribal-band"></div>
 
     <!-- 導航列 -->
@@ -446,7 +564,7 @@
         </div>
       </a>
 
-      <!-- 中日切換鍵 -->
+      <!-- 語言切換膠囊 -->
       <div class="lang-switcher">
         <button class="lang-btn active" id="btn-ja" onclick="setLanguage('ja')">日本語</button>
         <button class="lang-btn" id="btn-zh" onclick="setLanguage('zh')">繁中</button>
@@ -460,7 +578,7 @@
            class="cip-banner-img">
     </div>
 
-    <!-- Hero 封面特刊 -->
+    <!-- 頁首主視覺 -->
     <header class="hero-editorial">
       <span class="mag-label" id="i18n-hero-tag">8 Days ‧ 台湾深層グランドツアー</span>
       <h1 class="hero-lead-title" id="i18n-hero-title">
@@ -478,13 +596,13 @@
       </blockquote>
     </header>
 
-    <!-- 3大規格亮點列 -->
+    <!-- 3大規格亮點列（6〜20人規格對齊） -->
     <div class="section-block" style="padding-top: 0; padding-bottom: 0;">
       <div class="specs-strip">
         <div class="spec-item">
           <div class="spec-icon">🌿</div>
           <div class="spec-title" id="i18n-sp1-t">少人数催行</div>
-          <div class="spec-sub" id="i18n-sp1-s">6名様より貸切可能</div>
+          <div class="spec-sub" id="i18n-sp1-s">6〜20名様限定</div>
         </div>
         <div class="spec-item">
           <div class="spec-icon">🚐</div>
@@ -494,125 +612,121 @@
         <div class="spec-item">
           <div class="spec-icon">🛡️</div>
           <div class="spec-title" id="i18n-sp3-t">原民会認定</div>
-          <div class="spec-sub" id="i18n-sp3-s">最大20名様限定</div>
+          <div class="spec-sub" id="i18n-sp3-s">正規甲種旅行業</div>
         </div>
       </div>
     </div>
 
-    <!-- 篇章 01：四大原鄉深度體驗亮點（置入吉祥物 06 探索圖示） -->
+    <!-- 原鄉深度體驗四大亮點（Surface Pro 自動切換雙欄） -->
     <section class="section-block">
       <div class="sec-header-row">
         <div>
           <span class="sec-chapter">HIGHLIGHTS</span>
           <h2 class="sec-title" id="i18n-hl-title">原郷深層体験・四大ハイライト</h2>
         </div>
-        <!-- 原民會吉祥物 06 -->
         <img src="https://raw.githubusercontent.com/envoytraveltaiwan-walker/healing-trip/main/%E7%B4%A0%E6%9D%90_2026%E6%97%A5%E6%9C%AC%E6%97%85%E5%B1%95(%E5%8E%9F%E6%B0%91%E6%9C%83)_%E7%B5%A6%E6%A5%AD%E8%80%85-06.png" 
              alt="原民探索吉祥物" 
              class="mascot-icon">
       </div>
 
-      <!-- 亮點 1 -->
-      <div class="highlight-box">
-        <div class="hl-header">
-          <span>🌿</span> <span id="hl-1-title">亮點一 ｜ 雙聖地尋幽・在地原住民解說</span>
-        </div>
-        <p class="hl-desc" id="hl-1-desc">
-          踏入一般觀光客無法觸及的深山禁區，在族人帶領下領略巨木與自然的共生哲學。
-        </p>
-        <div class="hl-sublist" id="hl-1-list">
-          • <b>布農族鸞山森林博物館</b>：踏入無圍牆的天然博物館，探訪巨型「森林阿凡達」楠榕混生林，體會布農族敬畏土地的智慧。<br>
-          • <b>泰雅族棲蘭 130 線原始檜木林</b>：深入管制秘境，親賞紅檜與黃檜參天巨木群，聽族人解說山林生態多樣性。
-        </div>
-      </div>
-
-      <!-- 亮點 2 -->
-      <div class="highlight-box">
-        <div class="hl-header">
-          <span>🏕️</span> <span id="hl-2-title">亮點二 ｜ 四大族群縱貫・部落文化體驗</span>
-        </div>
-        <p class="hl-desc" id="hl-2-desc">
-          從南台灣排灣石階走至北台灣泰雅山林，橫跨多元文化的精神世界。
-        </p>
-        <div class="hl-sublist" id="hl-2-list">
-          • <b>排灣/魯凱族（禮納里部落）</b>：傳統過火迎賓儀式、四步舞、頭目家屋圖騰解說與工藝 DIY。<br>
-          • <b>排灣族（吾拉魯滋部落）</b>：走訪台灣阿拉比卡咖啡產地，聆聽部落重建故事並體驗手烘咖啡。<br>
-          • <b>泰雅族（宜蘭樂水部落）</b>：體驗竹筒飯製作、烤鹹豬肉，與族人同歡部落歌舞。
-        </div>
-      </div>
-
-      <!-- 亮點 3（置入吉祥物 03 美食圖示） -->
-      <div class="highlight-box">
-        <div class="hl-header" style="justify-content:space-between;">
-          <div style="display:flex; align-items:center; gap:8px;">
-            <span>🍽️</span> <span id="hl-3-title">亮點三 ｜ 部落風味饗宴・土地美味饋贈</span>
+      <div class="highlights-container">
+        <!-- 亮點 1 -->
+        <div class="highlight-box">
+          <div class="hl-header">
+            <span>🌿</span> <span id="hl-1-title">見どころ一 ｜ 二大聖地を巡る・先住民族による特別解説</span>
           </div>
-          <!-- 原民會吉祥物 03 -->
-          <img src="https://raw.githubusercontent.com/envoytraveltaiwan-walker/healing-trip/main/%E7%B4%A0%E6%9D%90_2026%E6%97%A5%E6%9C%AC%E6%97%85%E5%B1%95(%E5%8E%9F%E6%B0%91%E6%9C%83)_%E7%B5%A6%E6%A5%AD%E8%80%85-03.png" 
-               alt="原民美食吉祥物" 
-               style="width:32px; height:32px; object-fit:contain;">
+          <p class="hl-desc" id="hl-1-desc">
+            一般の観光客が足を踏み入れられない山林の保護区へ。族人の案内で巨木と自然の共生哲学に触れます。
+          </p>
+          <div class="hl-sublist" id="hl-1-list">
+            • <b>ブヌン族 鸞山森林博物館</b>：コンクリートの一切ない天然の森の博物館。巨大なガジュマルの原生林を歩き、土地への敬意を学びます。<br>
+            • <b>タイヤル族 棲蘭130線ヒノキ原生林</b>：入山規制秘境へ。樹齢数百年の紅檜・黄檜の巨木群を、現地住民による案内で巡ります。
+          </div>
         </div>
-        <p class="hl-desc" id="hl-3-desc">
-          產地直送零距離食材，兼顧文化原味與星級住宿舒適。
-        </p>
-        <div class="hl-sublist" id="hl-3-list">
-          • <b>原鄉特色料理</b>：品嚐原汁原味的部落風味餐、泰雅部落風味料理、阿美族傳統野菜美食與原生植物園嚴選野菜自助鍋。<br>
-          • <b>質感沉浸住宿</b>：安排禮納里與樂水部落接待家庭，深刻體驗部落熱情；並搭配鹿鳴溫泉酒店、理想大地渡假村與水岸森林會館。
+
+        <!-- 亮點 2 -->
+        <div class="highlight-box">
+          <div class="hl-header">
+            <span>🏕️</span> <span id="hl-2-title">見どころ二 ｜ 四大多元民族を縦断・集落文化体験</span>
+          </div>
+          <p class="hl-desc" id="hl-2-desc">
+            南台湾の石板集落から北台湾のタイヤルの森まで、多様な文化の精神世界を体感します。
+          </p>
+          <div class="hl-sublist" id="hl-2-list">
+            • <b>パイワン/ルカイ族（礼納里集落）</b>：伝統の厄払い儀式、四歩舞、頭目の家屋の彫刻解説と工芸DIY。<br>
+            • <b>パイワン族（ウラルズ集落）</b>：台湾アラビ卡珈琲の産地を訪ね、集落再生の物語を聴きながら手焙煎を体験。<br>
+            • <b>タイヤル族（宜蘭楽水集落）</b>：竹筒ご飯作りや豚肉の炭火焼きを体験し、族人と歌や踊りで交流。
+          </div>
+        </div>
+
+        <!-- 亮點 3 -->
+        <div class="highlight-box">
+          <div class="hl-header">
+            <span>🍽️</span> <span id="hl-3-title">見どころ三 ｜ 風土ガストロノミー・大地の美味</span>
+          </div>
+          <p class="hl-desc" id="hl-3-desc">
+            産地直送のオーガニック野菜と郷土料理を味わい、快適なリゾートホテルで癒やされます。
+          </p>
+          <div class="hl-sublist" id="hl-3-list">
+            • <b>原郷の伝統料理</b>：土地の命をいただく郷土ジビエやアミ族の山菜料理を堪能。<br>
+            • <b>上質な滞在</b>：礼納里と楽水では温かな集落ホームステイ、さらに鹿鳴温泉ホテルや理想大地リゾートなど快適な宿泊をご用意。
+          </div>
+        </div>
+
+        <!-- 亮點 4 -->
+        <div class="highlight-box">
+          <div class="hl-header">
+            <span>🚐</span> <span id="hl-4-title">見どころ四 ｜ 快適なシームレス移動・専用ハイヤーと新幹線</span>
+          </div>
+          <p class="hl-desc" id="hl-4-desc">
+            高雄発、全行程快適な専用ハイヤーで集落や秘境へ直行。最終日は新幹線でスムーズに台北へ戻ります。
+          </p>
         </div>
       </div>
 
-      <!-- 亮點 4 -->
-      <div class="highlight-box">
-        <div class="hl-header">
-          <span>🚐</span> <span id="hl-4-title">亮點四 ｜ 輕鬆無憂移動・全程專車與高鐵</span>
-        </div>
-        <p class="hl-desc" id="hl-4-desc">
-          高雄專車出發，全程舒適接送，最後一日專車前往高鐵站搭車返家，免去長途開車勞頓。
-        </p>
-      </div>
-
-      <!-- 6人成行專屬說明（已移除 $500 優惠券等促銷字眼） -->
+      <!-- 6〜20人成行專屬說明 -->
       <div class="charter-card" id="i18n-charter-box">
-        <strong>✦ 6人成團即可出發！</strong><br>
-        本行程支持單人報名湊團，只要滿 6 人即刻成團；若達 6 人亦可自選出發日期獨立包專車！請直接透過 LINE 或 Email 提供您「想出發的日期區間」、「參加人數」與「特殊需求」，專屬團隊將迅速為您調配成行。
+        <strong>✦ 6〜20名様限定催行！</strong><br>
+        お一人様のエントリーも大歓迎（全体で6名に達し次第催行）。6名様以上のグループなら、出発日を自由に選べる専用車貸切チャーターが可能です！LINEまたはメールにてご希望時期や人数をお気軽にご相談ください。
       </div>
     </section>
 
-    <!-- 篇章 02：常見問題 (FAQ)（置入吉祥物 05 放鬆休憩） -->
+    <!-- 常見問題 FAQ（Surface Pro 自動雙欄） -->
     <section class="section-block" style="background:#F4EFE6;">
       <div class="sec-header-row">
         <div>
           <span class="sec-chapter">FAQ</span>
-          <h2 class="sec-title" id="i18n-faq-title">常見問題 Q&amp;A</h2>
+          <h2 class="sec-title" id="i18n-faq-title">よくあるご質問（FAQ）</h2>
         </div>
-        <!-- 原民會吉祥物 05 -->
         <img src="https://raw.githubusercontent.com/envoytraveltaiwan-walker/healing-trip/main/%E7%B4%A0%E6%9D%90_2026%E6%97%A5%E6%9C%AC%E6%97%85%E5%B1%95(%E5%8E%9F%E6%B0%91%E6%9C%83)_%E7%B5%A6%E6%A5%AD%E8%80%85-05.png" 
              alt="放鬆休憩吉祥物" 
              class="mascot-icon">
       </div>
 
-      <div class="faq-item">
-        <div class="faq-q"><span>Q1.</span> <span id="faq-q1">一個人可以報名參加嗎？</span></div>
-        <div class="faq-a" id="faq-a1">完全可以！我們非常歡迎單人報名。許多參加心靈行旅的團友也是獨自出發，在莉梅姐與部落朋友的熱情陪伴下，輕鬆融入大家。</div>
-      </div>
+      <div class="faq-grid">
+        <div class="faq-item">
+          <div class="faq-q"><span>Q1.</span> <span id="faq-q1">一人での参加は可能ですか？</span></div>
+          <div class="faq-a" id="faq-a1">はい、大歓迎です！多くのお客様がお一人で参加されています。莉梅姐や現地集落の温かなもてなしで、すぐに打ち解けていただけます。</div>
+        </div>
 
-      <div class="faq-item">
-        <div class="faq-q"><span>Q2.</span> <span id="faq-q2">成團人數與出團上限是多少？</span></div>
-        <div class="faq-a" id="faq-a2">本行程堅持高品質質感小團！滿 6 人即可成團出發，為維護導覽品質與部落體驗，每團最多僅收 20 人，名額有限。</div>
-      </div>
+        <div class="faq-item">
+          <div class="faq-q"><span>Q2.</span> <span id="faq-q2">催行人数と定員は何名ですか？</span></div>
+          <div class="faq-a" id="faq-a2">上質なツアー品質を維持するため、6名様で催行確定、最大20名様限定としております。</div>
+        </div>
 
-      <div class="faq-item">
-        <div class="faq-q"><span>Q3.</span> <span id="faq-q3">這次行程是由莉梅姐親自帶領嗎？</span></div>
-        <div class="faq-a" id="faq-a3">是的！本行程特別邀請莉梅姐親自隨團陪伴與導覽解說，並備有專屬合格日語導遊/翻譯，帶您用最深刻、最溫暖的視角走進部落與秘境山林。</div>
-      </div>
+        <div class="faq-item">
+          <div class="faq-q"><span>Q3.</span> <span id="faq-q3">莉梅姐が全行程同行しますか？</span></div>
+          <div class="faq-a" id="faq-a3">はい！35年のキャリアを持つ莉梅姐が自ら同行し、専属のプロ日本語通訳ガイドとともに丁寧にご案内いたします。</div>
+        </div>
 
-      <div class="faq-item">
-        <div class="faq-q"><span>Q4.</span> <span id="faq-q4">行程中的行走強度會不會太高？老人家適合嗎？</span></div>
-        <div class="faq-a" id="faq-a4">行程以慢活體驗與深度解說為主，步道平緩好走，完全不包含攀爬急坡等劇烈活動，相當適合熟齡族群與喜愛大自然的朋友共同參與。</div>
+        <div class="faq-item">
+          <div class="faq-q"><span>Q4.</span> <span id="faq-q4">歩く強度は高めですか？高齢者でも参加できますか？</span></div>
+          <div class="faq-a" id="faq-a4">危険な急斜面を登るような登山は一切ございません。歩きやすく整備された平坦な自然歩道や集落散策が中心ですので、シニアの方も安心してご参加いただけます。</div>
+        </div>
       </div>
     </section>
 
-    <!-- 官方認證與旅行業履約保證統一頁尾（包含原民會正式彩色 Logo） -->
+    <!-- 官方認證與旅行業履約保證統一頁尾（含原民會正式彩色 Logo） -->
     <footer class="footer-official-badge">
       <p class="company-name" id="ft-comp-name">
         台湾・安捷國際旅行社有限公司 ENVOY TRAVEL
@@ -621,7 +735,6 @@
         交通部観光署 登録旅行業 甲種 5920 号 ｜ 統一番号：16169138
       </p>
       
-      <!-- 原民會正式 Logo ＋ 官方推薦背書 -->
       <div class="endorsement-box">
         <img src="https://raw.githubusercontent.com/envoytraveltaiwan-walker/healing-trip/main/%E7%B4%A0%E6%9D%90_2026%E6%97%A5%E6%9C%AC%E6%97%85%E5%B1%95(%E5%8E%9F%E6%B0%91%E6%9C%83)_%E7%B5%A6%E6%A5%AD%E8%80%85-02.png" 
              alt="原住民族委員會" 
@@ -636,14 +749,16 @@
       </p>
     </footer>
 
-    <!-- 底部固定按鈕列 -->
+    <!-- 底部固定按鈕列：手機防遮擋 ✕ Surface Pro 居中收整 -->
     <div class="bottom-bar">
-      <a href="mailto:service@envoytravel.com.tw?subject=【東京旅展2026】山海と呼吸する8日間・お見積り相談" class="bar-btn btn-mail" id="i18n-btn-b2b">
-        ✉ メールでお見積り (B2B)
-      </a>
-      <a href="https://lin.ee/Z3c7Qam" target="_blank" class="bar-btn btn-line" id="i18n-btn-b2c">
-        💬 LINEで相談・予約 (B2C)
-      </a>
+      <div class="bottom-bar-inner">
+        <a href="mailto:service@envoytravel.com.tw?subject=【東京旅展2026】山海と呼吸する8日間・お見積り相談" class="bar-btn btn-mail" id="i18n-btn-b2b" onclick="trackEvent('click_email', 'CTA', 'Email_Inquiry')">
+          メールでお問合せ
+        </a>
+        <a href="https://lin.ee/Z3c7Qam" target="_blank" class="bar-btn btn-line" id="i18n-btn-b2c" onclick="trackEvent('click_line', 'CTA', 'Line_Consult')">
+          LINEで相談する
+        </a>
+      </div>
     </div>
 
   </div>
@@ -656,9 +771,9 @@
         heroTitle: "山海と呼吸する・四大多元民族を巡る深層の旅 8日間",
         heroSub: "パイワン ✕ ルカイ ✕ ブヌン ✕ タイヤル 四大先住民族を縦断",
         heroQuote: "「どれほど長く、静かに耳を澄ませて山と大地の物語を聴いていないでしょうか？<br>単なる観光ではなく、35年の引路人・莉梅姐（メイ姉さん）が台湾深層の文化へとご案内します。」",
-        sp1T: "少人数催行", sp1S: "6名様より貸切可能",
+        sp1T: "少人数催行", sp1S: "6〜20名様限定",
         sp2T: "専用車＋新幹線", sp2S: "快適な移動をお約束",
-        sp3T: "原民会認定", sp3S: "最大20名様限定",
+        sp3T: "原民会認定", sp3S: "正規甲種旅行業",
         hlTitle: "原郷深層体験・四大ハイライト",
         hl1Title: "見どころ一 ｜ 二大聖地を巡る・先住民族による特別解説",
         hl1Desc: "一般の観光客が足を踏み入れられない山林の保護区へ。族人の案内で巨木と自然の共生哲学に触れます。",
@@ -671,7 +786,7 @@
         hl3List: "• <b>原郷の伝統料理</b>：土地の命をいただく郷土ジビエやアミ族の山菜料理を堪能。<br>• <b>上質な滞在</b>：礼納里と楽水では温かな集落ホームステイ、さらに鹿鳴温泉ホテルや理想大地リゾートなど快適な宿泊をご用意。",
         hl4Title: "見どころ四 ｜ 快適なシームレス移動・専用ハイヤーと新幹線",
         hl4Desc: "高雄発、全行程快適な専用ハイヤーで集落や秘境へ直行。最終日は新幹線でスムーズに台北へ戻ります。",
-        charterBox: "<strong>✦ 6名様より催行確定！</strong><br>お一人様のエントリーも大歓迎（全体で6名に達し次第催行）。6名様以上のグループなら、出発日を自由に選べる専用車貸切チャーターが可能です！LINEまたはメールにてご希望時期や人数をお気軽にご相談ください。",
+        charterBox: "<strong>✦ 6〜20名様限定催行！</strong><br>お一人様のエントリーも大歓迎（全体で6名に達し次第催行）。6名様以上のグループなら、出発日を自由に選べる専用車貸切チャーターが可能です！LINEまたはメールにてご希望時期や人数をお気軽にご相談ください。",
         faqTitle: "よくあるご質問（FAQ）",
         faqQ1: "一人での参加は可能ですか？",
         faqA1: "はい、大歓迎です！多くのお客様がお一人で参加されています。莉梅姐や現地集落の温かなもてなしで、すぐに打ち解けていただけます。",
@@ -684,18 +799,18 @@
         ftCompName: "台湾・安捷國際旅行社有限公司 ENVOY TRAVEL",
         ftLicInfo: "交通部観光署 登録旅行業 甲種 5920 号 ｜ 統一番号：16169138",
         ftEndorseText: "【推薦・公認】台湾 原住民族委員会 認定パートナーシップ企業",
-        btnB2B: "✉ メールでお見積り (B2B)",
-        btnB2C: "💬 LINEで相談・予約 (B2C)"
+        btnB2B: "メールでお問合せ",
+        btnB2C: "LINEで相談する"
       },
       zh: {
         navRegSub: "安捷旅遊 ‧ 甲種 5920 號",
-        heroTag: "8 Days ‧ 2026 日本旅展・深度原鄉首發推薦",
+        heroTag: "8 Days ‧ 深度原鄉心靈行旅",
         heroTitle: "【跟著山海去呼吸】從排灣斜坡到泰雅秘境 8日心靈行旅",
         heroSub: "縱貫排灣 ✕ 布農 ✕ 阿美 ✕ 泰雅四大族群 ｜ 解密鸞山阿凡達森林與棲蘭檜木巨木群",
         heroQuote: "「您有多久，沒有靜下心來聽聽山與土地的故事了？<br>這不只是一趟旅行，更是一場由莉梅姐帶領深入島嶼靈魂的文化尋根，在巨木森林與歌聲中找回純粹平靜。」",
-        sp1T: "精品小團品質", sp1S: "可單人報名",
+        sp1T: "精品小團品質", sp1S: "6〜20人成行",
         sp2T: "專車＋高鐵", sp2S: "全程輕鬆無憂移動",
-        sp3T: "6人即成團", sp3S: "每團上限20人",
+        sp3T: "原民會推薦", sp3S: "合法甲種履約保障",
         hlTitle: "原鄉深度體驗四大亮點",
         hl1Title: "亮點一 ｜ 雙聖地尋幽・在地原住民解說",
         hl1Desc: "踏入一般觀光客無法觸及的深山禁區，在族人帶領下領略巨木與自然的共生哲學。",
@@ -708,7 +823,7 @@
         hl3List: "• <b>原鄉特色料理</b>：品嚐原汁原味的部落風味餐、泰雅部落風味料理、阿美族傳統野菜美食與原生植物園嚴選野菜自助鍋。<br>• <b>質感沉浸住宿</b>：安排禮納里與樂水部落接待家庭，深刻體驗部落熱情；並搭配鹿鳴溫泉酒店、理想大地渡假村與水岸森林會館。",
         hl4Title: "亮點四 ｜ 輕鬆無憂移動・全程專車與高鐵",
         hl4Desc: "高雄專車出發，全程舒適接送，最後一日專車前往高鐵站搭車返家，免去長途開車勞頓。",
-        charterBox: "<strong>✦ 6人成團即可出發！</strong><br>本行程支持單人報名湊團，只要滿 6 人即刻成團；若達 6 人亦可自選出發日期獨立包專車！請直接透過 LINE 或 Email 提供您「想出發的日期區間」、「參加人數」與「特殊需求」，專屬團隊將迅速為您調配成行。",
+        charterBox: "<strong>✦ 6〜20人即可成團！</strong><br>支持一人報名湊團；達 6 人即可自選出發日期獨立包專車！請透過 LINE 或 Email 提供您「想出發的日期區間」與「參加人數」，專屬團隊將迅速為您調配成行。",
         faqTitle: "常見問題 Q&A",
         faqQ1: "一個人可以報名參加嗎？",
         faqA1: "完全可以！我們非常歡迎單人報名。許多參加心靈行旅的團友也是獨自出發，在莉梅姐與部落朋友的熱情陪伴下，輕鬆融入大家。",
@@ -721,8 +836,8 @@
         ftCompName: "安捷國際旅行社有限公司 ENVOY TRAVEL",
         ftLicInfo: "交通部觀光署 註冊旅行業 甲種 5920 號 ｜ 統編：16169138",
         ftEndorseText: "【官方推薦】行政院原住民族委員會認證合作夥伴",
-        btnB2B: "✉ Email 專屬報價 (B2B)",
-        btnB2C: "💬 加 LINE 取得報價 (B2C)"
+        btnB2B: "Email 洽詢",
+        btnB2C: "LINE 專人諮詢"
       }
     };
 
