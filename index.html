@@ -189,7 +189,7 @@
       box-shadow: 0 2px 6px rgba(19, 36, 56, 0.25);
     }
 
-    /* 原民會主視覺橫幅容器 */
+    /* 原民會主視覺橫幅容器（修正後：完全不裁切文字） */
     .cip-banner-box {
       padding: 16px 20px 0;
       background: #EAE5DC;
@@ -197,8 +197,9 @@
     }
     .cip-banner-img {
       width: 100%;
-      max-height: 280px;
-      object-fit: cover;
+      height: auto;
+      max-height: none;
+      object-fit: contain;
       border-radius: 12px;
       box-shadow: 0 4px 14px rgba(0,0,0,0.06);
       display: block;
@@ -415,7 +416,7 @@
 
     /* 官方認證統一頁尾 */
     .footer-official-badge {
-      padding: 32px 20px 24px;
+      padding: 34px 20px 24px;
       background-color: #EDE8DF;
       border-top: 1px solid rgba(197, 160, 89, 0.28);
       text-align: center;
@@ -435,27 +436,36 @@
       font-size: 12px;
       color: #666666;
       letter-spacing: 0.03em;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
 
     .footer-official-badge .endorsement-box {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      margin: 12px 0;
+      gap: 12px;
+      margin: 14px auto;
+      max-width: 620px;
+      flex-wrap: wrap;
     }
 
     .footer-official-badge .cip-logo-img {
-      height: 24px;
+      height: 32px;
       width: auto;
+      max-width: 100%;
       object-fit: contain;
+      display: inline-block;
+      vertical-align: middle;
+      flex-shrink: 0;
+      filter: drop-shadow(0 1px 2px rgba(0,0,0,0.05));
     }
 
     .footer-official-badge .endorsement-text {
       font-size: 12px;
       font-weight: 600;
       color: #8C6B2D;
+      display: inline-block;
+      vertical-align: middle;
     }
 
     .footer-official-badge .copyright-text {
@@ -463,6 +473,7 @@
       font-family: var(--font-en);
       color: #8E8E8E;
       letter-spacing: 0.05em;
+      margin-top: 4px;
     }
 
     /* 底部固定 CTA */
@@ -508,6 +519,7 @@
       .brand-name-sub { display: none; }
       .nav-ctrl-btn span { display: none; }
       .nav-ctrl-btn { padding: 6px 10px; }
+      .footer-official-badge .cip-logo-img { height: 26px; }
     }
   </style>
 </head>
@@ -556,10 +568,10 @@
       </div>
     </nav>
 
-    <!-- 原民會 2026 日本旅展「部行山海間」官方主視覺橫幅 -->
+    <!-- 原民會 2026 日本旅展「部行山海間」官方主視覺橫幅（已更新為 mountain-sea-8d 專案路徑） -->
     <div class="cip-banner-box">
-      <img src="https://raw.githubusercontent.com/envoytraveltaiwan-walker/healing-trip/main/%E7%B4%A0%E6%9D%90_2026%E6%97%A5%E6%9C%AC%E6%97%85%E5%B1%95(%E5%8E%9F%E6%B0%91%E6%9C%83)_%E7%B5%A6%E6%A5%AD%E8%80%85-07.jpg" 
-           alt="部行山海間" 
+      <img src="https://raw.githubusercontent.com/envoytraveltaiwan-walker/mountain-sea-8d/main/%E7%B4%A0%E6%9D%90_2026%E6%97%A5%E6%9C%AC%E6%97%85%E5%B1%95(%E5%8E%9F%E6%B0%91%E6%9C%83)_%E7%B5%A6%E6%A5%AD%E8%80%85-07.png" 
+           alt="部行山海間 - 山と海をめぐる、台湾原住民族の旅" 
            class="cip-banner-img">
     </div>
 
@@ -727,7 +739,8 @@
       <div class="endorsement-box">
         <img src="https://raw.githubusercontent.com/envoytraveltaiwan-walker/healing-trip/main/%E7%B4%A0%E6%9D%90_2026%E6%97%A5%E6%9C%AC%E6%97%85%E5%B1%95(%E5%8E%9F%E6%B0%91%E6%9C%83)_%E7%B5%A6%E6%A5%AD%E8%80%85-02.png" 
              alt="原住民族委員會" 
-             class="cip-logo-img">
+             class="cip-logo-img"
+             onerror="this.src='https://raw.githubusercontent.com/envoytraveltaiwan-walker/lowcarbon-valley-3d/main/%E7%B4%A0%E6%9D%90_2026%E6%97%A5%E6%9C%AC%E6%97%85%E5%B1%95(%E5%8E%9F%E6%B0%91%E6%9C%83)_%E7%B5%A6%E6%A5%AD%E8%80%85-02.png'">
         <span class="endorsement-text" id="ft-endorse-text">
           【推薦・公認】台湾 原住民族委員会 認定パートナーシップ企業
         </span>
@@ -753,12 +766,13 @@
   <script>
     // 返回上一頁或回旅展主頁
     function smartGoBack() {
-      if (document.referrer && document.referrer.indexOf(window.location.host) !== -1) {
+      const expoHomeUrl = 'https://envoytraveltaiwan-walker.github.io/tokyo-expo/';
+      if (document.referrer && document.referrer.indexOf('envoytraveltaiwan-walker.github.io') !== -1) {
         window.history.back();
       } else if (window.history.length > 1) {
         window.history.back();
       } else {
-        window.location.href = 'https://envoytraveltaiwan-walker.github.io/tokyo-expo/';
+        window.location.href = expoHomeUrl;
       }
     }
 
@@ -825,7 +839,7 @@
         hl3List: "• <b>原鄉特色料理</b>：品嚐原汁原味的部落風味餐、泰雅部落風味料理、阿美族傳統野菜美食與原生植物園嚴選野菜自助鍋。<br>• <b>質感沉浸住宿</b>：安排禮納里與樂水部落接待家庭，深刻體驗部落熱情；並搭配鹿鳴溫泉酒店、理想大地渡假村與水岸森林會館。",
         hl4Title: "亮點四 ｜ 輕鬆無憂移動・全程專車與高鐵",
         hl4Desc: "高雄專車出發，全程舒適接送，最後一日專車前往高鐵站搭車返家，免去長途開車勞頓。",
-        charterBox: "<strong>✦ 6〜20人即可成團！</strong><br>支持一人報名湊團；達 6 人即可自選出發日期獨立包專車！請透過 LINE 或 Email 提供您「想出發的梯次或日期區間」與「參加人數」，專屬團隊將迅速為您調配成行。",
+        charterBox: "<strong>✦ 6〜20人即可成團！</strong><br>支持一人報名湊團；達 6 人即可自選出發日期獨立包專車！請透過 LINE 或 Email 提供您「想出發的日期區間」與「參加人數」，專屬團隊將迅速為您調配成行。",
         faqTitle: "常見問題 Q&A",
         faqQ1: "一個人可以報名參加嗎？",
         faqA1: "完全可以！我們非常歡迎單人報名。許多參加心靈行旅的團友也是獨自出發，在莉梅姐與部落朋友的熱情陪伴下，輕鬆融入大家。",
@@ -836,7 +850,7 @@
         faqQ4: "行程中的行走強度會不會太高？老人家適合嗎？",
         faqA4: "行程以慢活體驗與深度解說為主，步道平緩好走，完全不含攀爬急坡等劇烈活動，相當適合熟齡族群與喜愛大自然的朋友共同參與。",
         ftCompName: "安捷國際旅行社有限公司 ENVOY TRAVEL",
-        ftLicInfo: "交通部觀光署 登録旅行業 甲種 5920 號 ｜ 統編：16169138",
+        ftLicInfo: "交通部觀光署 註冊旅行業 甲種 5920 號 ｜ 統編：16169138",
         ftEndorseText: "【官方推薦】行政院原住民族委員會認證合作夥伴",
         btnMail: "✉ Email 專屬洽詢",
         btnLine: "💬 加 LINE 專人諮詢"
